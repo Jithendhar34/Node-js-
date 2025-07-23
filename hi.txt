@@ -1,0 +1,1 @@
+hello this text is imported from hi.txt file
