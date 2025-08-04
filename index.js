@@ -34,11 +34,12 @@ fs.readFile('hi.txt',(err,data)=>{
 const fs = require('fs');
 fs.writeFile('example.txt', 'Hello, World!', (err) => {
   if (err) throw err;
-  console.log('Data written to file');
+  console.log('Data writsten to file');
 });
 
 */
 
 console.log("maintaing streak")
+//kagbsfjkdhfabsdkj
 
 
