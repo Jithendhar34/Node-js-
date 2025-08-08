@@ -1,1 +1,9 @@
 https://github.com/kachwalUttamsharma/Scaler-FullStack-November-2024
+
+
+jithendharkampati04
+jithendharkampati04
+mongodb+srv://jithendharkampati04:f8KjmquJ7OD8CfIX@cluster0.d1bozql.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+f8KjmquJ7OD8CfIX
