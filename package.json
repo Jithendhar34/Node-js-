@@ -20,11 +20,15 @@
     "url": "https://github.com/Jithendhar34/Node-js-/issues"
   },
   "homepage": "https://github.com/Jithendhar34/Node-js-#readme",
-  "description": "",
+  "description": "//comment",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "mongodb": "^2.2.36",
-    "mongoose": "^8.17.0",
-    "nodemon": "^3.1.10"
+    "mongoose": "^8.17.1",
+    "nodemon": "^3.1.10",
+    "react-router-dom": "^7.8.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
