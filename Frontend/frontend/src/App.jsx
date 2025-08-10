@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -97,11 +98,24 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Gradient Title Bar */}
-      <div className="title-bar">
+      {/* --- Navigation Links --- */}
+      <div className="side-nav">
+        <Link to="/login" className="nav-btn">Login</Link>
+        <Link to="/signup" className="nav-btn">Sign Up</Link>
+        <Link to="/about" className="nav-btn">About Us</Link>
+      </div>
+
+      {/* --- NEW: Hero Section --- */}
+      <div className="hero-section">
         <h1>Creator's Corner</h1>
         <p>Create your own product and sell it here.</p>
+        <div className="hero-buttons">
+          <Link to="/" className="hero-btn">Sell here </Link>
+          <Link to="/signup" className="hero-btn outline">Join Us</Link>
+        </div>
       </div>
+      {/* --- End of Hero Section --- */}
+
 
       {/* Product list with animation */}
       <div className="product-slider">
@@ -132,41 +146,45 @@ export default function App() {
       </div>
 
       {/* Form */}
-      <h2>{editingId ? "Update Product" : "Sell Your Product"}</h2>
-      <form onSubmit={handleSubmit} className="product-form">
-        <input
-          name="product_name"
-          placeholder="Name"
-          value={form.product_name}
-          onChange={handleChange}
-        />
-        <input
-          name="product_price"
-          type="number"
-          placeholder="Price"
-          value={form.product_price}
-          onChange={handleChange}
-        />
-        <input
-          name="category"
-          placeholder="Category"
-          value={form.category}
-          onChange={handleChange}
-        />
-        <input
-          name="product_description"
-          placeholder="Description"
-          value={form.product_description}
-          onChange={handleChange}
-        />
-        <input
-          name="product_image"
-          placeholder="Image URL"
-          value={form.product_image}
-          onChange={handleChange}
-        />
-        <button type="submit">{editingId ? "Update" : "Add Product"}</button>
-      </form>
+      <div className="form-section">
+        <h2>{editingId ? "Update Product" : "Sell Your Product"}</h2>
+        <h4>Enter your'e product details</h4>
+        <form onSubmit={handleSubmit} className="product-form">
+          <input
+            name="product_name"
+            placeholder="Name"
+            value={form.product_name}
+            onChange={handleChange}
+          />
+          <input
+            name="product_price"
+            type="number"
+            placeholder="Price"
+            value={form.product_price}
+            onChange={handleChange}
+          />
+          <input
+            name="category"
+            placeholder="Category"
+            value={form.category}
+            onChange={handleChange}
+          />
+          <input
+            name="product_description"
+            placeholder="Description"
+            value={form.product_description}
+            onChange={handleChange}
+          />
+          <input
+            name="product_image"
+            placeholder="Image URL"
+            value={form.product_image}
+            onChange={handleChange}
+          />
+          <button type="submit">{editingId ? "Update" : "Add Product"}</button>
+        </form>
+      </div>
+
 
       {/* CSS */}
       <style>{`
@@ -180,39 +198,105 @@ export default function App() {
 
         .app-container {
           min-height: 100vh;
-          width: 100vw;
+          width: 100%;
           background-color: black;
           color: white;
           padding: 20px;
           box-sizing: border-box;
+          position: relative; /* Needed for absolute positioning of child */
         }
 
-        .title-bar {
-          background: linear-gradient(90deg, blue, purple, pink);
-          padding: 20px;
+        /* --- Styles for Nav Buttons --- */
+        .side-nav {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          display: flex;
+          gap: 10px;
+          z-index: 10;
+        }
+        
+        .nav-btn {
+          background-color: #4A235A;
+          color: white;
+          border: 2px solid #9B59B6;
+          border-radius: 8px;
+          padding: 10px 20px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s, transform 0.2s;
+          text-decoration: none;
+        }
+
+        .nav-btn:hover {
+          background-color: #5D3370;
+          transform: scale(1.05);
+        }
+        /* --- End of Nav Button Styles --- */
+
+        /* --- NEW: Hero Section Styles --- */
+        .hero-section {
+          background: linear-gradient(90deg, #3A1C71, #D76D77, #FFAF7B);
+          padding: 80px 40px;
           text-align: center;
           border-radius: 10px;
+          margin-top: 60px;
         }
 
-        .title-bar h1 {
-          margin: 0;
-          font-size: 3rem;
+        .hero-section h1 {
+          margin: 0 0 10px 0;
+          font-size: 3.5rem;
           color: white;
           font-weight: bold;
         }
 
-        .title-bar p {
-          margin-top: 10px;
-          font-size: 1.2rem;
-          font-weight: 500;
+        .hero-section p {
+          margin: 0 0 30px 0;
+          font-size: 1.3rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+        }
+
+        .hero-btn {
+          background-color: white;
+          color: #D76D77;
+          border: 2px solid white;
+          border-radius: 8px;
+          padding: 12px 25px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+        
+        .hero-btn:hover {
+          background-color: transparent;
           color: white;
         }
+
+        .hero-btn.outline {
+          background-color: transparent;
+          color: white;
+        }
+        
+        .hero-btn.outline:hover {
+          background-color: white;
+          color: #D76D77;
+        }
+        /* --- End of Hero Section Styles --- */
 
         /* Product slider animation */
         .product-slider {
           overflow: hidden;
           width: 100%;
-          margin-top: 20px;
+          margin-top: 40px;
         }
 
         .product-track {
@@ -262,26 +346,41 @@ export default function App() {
           color: white;
         }
 
+        .form-section {
+          padding: 40px 0;
+        }
+
+        .form-section h2 {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 20px;
+        }
+          h4{
+          text-align: center;
+          }
+        
         .product-form {
           display: flex;
           gap: 10px;
           flex-wrap: wrap;
-          margin-top: 20px;
+          justify-content: center;
         }
 
         .product-form input {
-          padding: 5px;
+          padding: 10px;
           border-radius: 5px;
           border: none;
+          min-width: 200px;
         }
 
         .product-form button {
-          padding: 5px 10px;
+          padding: 10px 20px;
           background-color: white;
           color: black;
           border: none;
           border-radius: 5px;
           cursor: pointer;
+          font-weight: bold;
         }
       `}</style>
     </div>
